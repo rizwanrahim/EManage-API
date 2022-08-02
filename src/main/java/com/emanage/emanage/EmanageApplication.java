@@ -1,6 +1,5 @@
 package com.emanage.emanage;
 
-import com.EmployeeResource;
 import com.model.Employee;
 import com.repo.EmployeeRepo;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = EmployeeResource.class)
+@ComponentScan({"com.service", "com.controller"})
 @EntityScan(basePackageClasses = Employee.class)
 @EnableJpaRepositories(basePackageClasses = EmployeeRepo.class)
 public class EmanageApplication {

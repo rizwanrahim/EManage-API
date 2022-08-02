@@ -1,5 +1,6 @@
 package com.service;
 
+import com.exception.UserNotFoundException;
 import com.model.Employee;
 import com.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,14 @@ public class EmployeeService {
 
     public List<Employee> GetAll() {
         return repo.findAll();
+    }
+    public Employee Save(Employee employee) {
+        repo.save(employee);
+        return employee;
+    }
+    public Employee Find(Long id) {
+        var result = repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        return result;
     }
 }

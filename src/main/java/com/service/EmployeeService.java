@@ -29,4 +29,8 @@ public class EmployeeService {
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         return result;
     }
+
+    public void Delete(Long id) {
+        repo.deleteById(id);
+    }
 }

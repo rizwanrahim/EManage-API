@@ -36,4 +36,10 @@ public class EmployeeController {
         var result = service.Find(Id);
         return new ResponseEntity(result, HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> Delete(@PathVariable("id") Long Id) {
+        service.Delete(Id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

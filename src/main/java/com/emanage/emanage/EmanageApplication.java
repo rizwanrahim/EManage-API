@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan({"com.service", "com.controller"})
-@EntityScan(basePackageClasses = Employee.class)
-@EnableJpaRepositories(basePackageClasses = EmployeeRepo.class)
+@EntityScan({"com.model"})
+@EnableJpaRepositories({"com.repo"})
 public class EmanageApplication {
 
 	public static void main(String[] args) {

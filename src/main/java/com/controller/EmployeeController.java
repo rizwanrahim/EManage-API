@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.generic.GenericController;
 import com.model.Employee;
 import com.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,35 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController {
+public class EmployeeController extends GenericController<Employee, EmployeeService> {
 
-    private final EmployeeService service;
-
-    @Autowired
     public EmployeeController(EmployeeService service) {
-        this.service = service;
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Employee>> GetAll() {
-        return new ResponseEntity(service.GetAll(), HttpStatus.OK);
-    }
-
-    @PostMapping("/save")
-    public ResponseEntity<Employee> Save(@RequestBody Employee employee) {
-        var result = service.Save(employee);
-        return new ResponseEntity(result, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/find/{id}")
-    public  ResponseEntity<Employee> Find(@PathVariable("id") Long Id) {
-        var result = service.Find(Id);
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> Delete(@PathVariable("id") Long Id) {
-        service.Delete(Id);
-        return new ResponseEntity(HttpStatus.OK);
+        super(service);
     }
 }

@@ -1,7 +1,5 @@
 package com.generic;
 
-import com.model.Employee;
-import com.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 public class GenericController<TEntity, T extends GenericService> {
-    private final T service;
+    protected final T service;
 
     @Autowired
     public GenericController(T service) {

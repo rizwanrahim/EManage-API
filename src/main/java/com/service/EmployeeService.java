@@ -1,18 +1,25 @@
 package com.service;
 
-import com.exception.UserNotFoundException;
 import com.generic.GenericService;
-import com.model.Employee;
+import com.entity.Employee;
 import com.repo.EmployeeRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.repo.RoleRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
-@Service
+@Service @Transactional
 public class EmployeeService extends GenericService<Long, Employee, EmployeeRepo> {
+    private final RoleRepo roleRepo;
 
-    public EmployeeService(EmployeeRepo employeeRepo) {
+    public EmployeeService(EmployeeRepo employeeRepo, RoleRepo roleRepo) {
         super(employeeRepo);
+        this.roleRepo = roleRepo;
+    }
+
+    public boolean addRoleToUser(String username, String roleName) {
+        var employee = this.repo.findByUsername(username);
+        var role = roleRepo.findByName(roleName);
+        return employee.getRoles().add(role);
     }
 }

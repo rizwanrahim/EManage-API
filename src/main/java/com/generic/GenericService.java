@@ -1,15 +1,15 @@
 package com.generic;
 
 import com.exception.UserNotFoundException;
-import com.model.Employee;
-import com.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GenericService<ID, T, TRepo extends JpaRepository<T, ID>> {
-    private final TRepo repo;
+    protected final TRepo repo;
 
     @Autowired
     public GenericService(TRepo repo) {

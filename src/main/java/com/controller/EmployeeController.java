@@ -1,14 +1,12 @@
 package com.controller;
 
 import com.generic.GenericController;
-import com.model.Employee;
+import com.entity.Employee;
+import com.model.UserRole;
 import com.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
@@ -16,5 +14,11 @@ public class EmployeeController extends GenericController<Employee, EmployeeServ
 
     public EmployeeController(EmployeeService service) {
         super(service);
+    }
+
+    @PostMapping("/addRoleToUser")
+    public ResponseEntity<Boolean> Save(@RequestBody UserRole userRole) {
+        var result = this.service.addRoleToUser(userRole.getUsername(), userRole.getRole());
+        return new ResponseEntity(result, HttpStatus.CREATED);
     }
 }

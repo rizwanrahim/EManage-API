@@ -17,7 +17,7 @@ public class EmployeeController extends GenericController<Employee, EmployeeServ
     }
 
     @PostMapping("/addRoleToUser")
-    public ResponseEntity<Boolean> Save(@RequestBody UserRole userRole) {
+    public ResponseEntity<Boolean> AddRoleToUser(@RequestBody UserRole userRole) {
         var result = this.service.addRoleToUser(userRole.getUsername(), userRole.getRole());
         return new ResponseEntity(result, HttpStatus.CREATED);
     }

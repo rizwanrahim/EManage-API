@@ -1,7 +1,8 @@
 package com.controller;
 
-import com.generic.GenericController;
+import com.generic.AppController;
 import com.entity.Employee;
+import com.generic.AppResponse;
 import com.model.UserRole;
 import com.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController extends GenericController<Employee, EmployeeService> {
+public class EmployeeController extends AppController<Employee, EmployeeService> {
 
     public EmployeeController(EmployeeService service) {
         super(service);

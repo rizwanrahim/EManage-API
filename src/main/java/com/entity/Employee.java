@@ -20,18 +20,10 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @NotNull
-    @NotEmpty
     private String name;
-    @NotNull
-    @NotEmpty
     private String email;
     private String imageUrl;
-    @NotNull
-    @NotEmpty
     private String username;
-    @NotNull
-    @NotEmpty
     private String password;
     @ManyToMany(fetch = EAGER)
     private Collection<Role> roles = new ArrayList<>();

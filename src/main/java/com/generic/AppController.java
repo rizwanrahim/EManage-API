@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public class GenericController<TEntity, T extends GenericService> {
+public class AppController<TEntity, T extends AppService> {
     protected final T service;
 
     @Autowired
-    public GenericController(T service) {
+    public AppController(T service) {
         this.service = service;
     }
 

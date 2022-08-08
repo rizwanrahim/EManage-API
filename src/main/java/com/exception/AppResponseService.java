@@ -2,6 +2,8 @@ package com.exception;
 
 import com.entity.Employee;
 import com.generic.AppResponse;
+import org.springframework.data.repository.NoRepositoryBean;
+
 
 public class AppResponseService {
     protected  final <T> AppResponse<T> Run(RegisterAppResponse<T> reg) {

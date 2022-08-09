@@ -30,18 +30,13 @@ public class EmployeeService extends AppService<Long, Employee, IEmployeeRepo> {
 
     public AppResponse<Boolean> addRoleToUser(UserRole userRole) {
         return Run(res -> {
-            var isValid = userRoleAppValidator.valid(userRole);
-
-            if(!isValid) {
-                res.setResponse(isValid);
-                res.setValidationMessage(userRoleAppValidator.getErrors());
-                return;
+            userRoleAppValidator.valid(userRole, res);
+            if(res.isValidated()) {
+                var employee = this.repo.findByUsername(userRole.getUsername());
+                var role = IRoleRepo.findByName(userRole.getRole());
+                var _return = employee.getRoles().add(role);
+                res.setResponse(_return);
             }
-
-            var employee = this.repo.findByUsername(userRole.getUsername());
-            var role = IRoleRepo.findByName(userRole.getRole());
-            var _return = employee.getRoles().add(role);
-            res.setResponse(_return);
         });
     }
 }

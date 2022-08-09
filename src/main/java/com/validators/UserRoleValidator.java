@@ -1,21 +1,13 @@
 package com.validators;
 
+import com.generic.AppResponse;
 import com.model.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Getter @Component
-public class UserRoleValidator implements IAppValidator<UserRole> {
-    private final List<String> errors = new ArrayList<>();
-
+@Component
+public class UserRoleValidator extends AppValidator<UserRole> {
     @Override
-    public boolean valid(UserRole obj) {
+    public <TReturn> AppResponse<TReturn> valid(UserRole obj, AppResponse<TReturn> res) {
         errors.clear();
         if(obj.getUsername() == null ||
             obj.getUsername().trim().length() == 0)
@@ -25,10 +17,16 @@ public class UserRoleValidator implements IAppValidator<UserRole> {
                 obj.getRole().trim().length() == 0)
             errors.add("Role cannot be null or empty");
 
-        if(errors.isEmpty())
-            return true;
+        if(!errors.isEmpty()) {
+            res.setValidationMessage(errors);
+            res.setValidated(false);
+            res.setSucceded(false);
+            return res;
+        }
 
-        return false;
+        res.setValidated(true);
+        res.setSucceded(true);
+        return res;
     }
 
 }

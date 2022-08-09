@@ -17,16 +17,7 @@ public class UserRoleValidator extends AppValidator<UserRole> {
                 obj.getRole().trim().length() == 0)
             errors.add("Role cannot be null or empty");
 
-        if(!errors.isEmpty()) {
-            res.setValidationMessage(errors);
-            res.setValidated(false);
-            res.setSucceded(false);
-            return res;
-        }
-
-        res.setValidated(true);
-        res.setSucceded(true);
-        return res;
+        return SetResponse(res);
     }
 
 }

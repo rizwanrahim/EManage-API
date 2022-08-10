@@ -2,10 +2,12 @@ package com.exception;
 
 import com.entity.Employee;
 import com.generic.AppResponse;
+import com.validators.IAppValidator;
 import org.springframework.data.repository.NoRepositoryBean;
 
 
 public class AppResponseService {
+
     protected  final <T> AppResponse<T> Run(RegisterAppResponse<T> reg) {
         var app = new AppResponse<T>();
         try {
@@ -14,6 +16,11 @@ public class AppResponseService {
             app.setErrorMessage(e.getMessage());
         }
         return app;
+    }
+
+    protected  final <T> AppResponse<T> Run(RegisterAppResponse<T> reg, IAppValidator<T> validator, AppResponse<T> app) {
+        validator.valid(app.getResponse(), app);
+        return Run(reg);
     }
 
     @FunctionalInterface

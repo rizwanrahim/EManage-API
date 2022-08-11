@@ -1,6 +1,6 @@
-package com.validators;
+package com.shared.validators;
 
-import com.generic.AppResponse;
+import com.shared.AppResponse;
 
 import java.util.List;
 public interface IAppValidator<T> {

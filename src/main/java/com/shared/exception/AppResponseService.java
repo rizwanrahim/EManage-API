@@ -1,9 +1,7 @@
-package com.exception;
+package com.shared.exception;
 
-import com.entity.Employee;
-import com.generic.AppResponse;
-import com.validators.IAppValidator;
-import org.springframework.data.repository.NoRepositoryBean;
+import com.shared.AppResponse;
+import com.shared.validators.IAppValidator;
 
 
 public class AppResponseService {

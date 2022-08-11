@@ -1,15 +1,14 @@
-package com.validators;
+package com.service.validation;
 
-import antlr.StringUtils;
-import com.entity.Employee;
-import com.generic.AppResponse;
-import com.model.UserRole;
+import com.entity.User;
+import com.shared.AppResponse;
+import com.shared.validators.AppValidator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeValidator extends AppValidator<Employee> {
+public class UserValidator extends AppValidator<User> {
     @Override
-    public <X> AppResponse<X> valid(Employee obj, AppResponse<X> res) {
+    public <X> AppResponse<X> valid(User obj, AppResponse<X> res) {
         errors.clear();
         IsNullOrEmpty(obj.getName(), "Name", errors);
         IsNullOrEmpty(obj.getUsername(), "Username", errors);

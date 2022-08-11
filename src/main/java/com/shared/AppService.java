@@ -1,9 +1,8 @@
-package com.generic;
+package com.shared;
 
-import com.exception.AppResponseService;
-import com.exception.NotFoundException;
-import com.model.UserRole;
-import com.validators.IAppValidator;
+import com.shared.exception.AppResponseService;
+import com.shared.exception.NotFoundException;
+import com.shared.validators.IAppValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

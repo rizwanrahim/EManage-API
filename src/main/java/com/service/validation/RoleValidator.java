@@ -1,7 +1,8 @@
-package com.validators;
+package com.service.validation;
 
 import com.entity.Role;
-import com.generic.AppResponse;
+import com.shared.AppResponse;
+import com.shared.validators.AppValidator;
 
 public class RoleValidator extends AppValidator<Role> {
 

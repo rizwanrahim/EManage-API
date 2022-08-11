@@ -1,7 +1,8 @@
-package com.validators;
+package com.service.validation;
 
-import com.generic.AppResponse;
 import com.model.UserRole;
+import com.shared.AppResponse;
+import com.shared.validators.AppValidator;
 import org.springframework.stereotype.Component;
 
 @Component

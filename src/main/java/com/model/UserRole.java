@@ -1,10 +1,10 @@
 package com.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter @NoArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRole {
     private String username;
     private String role;

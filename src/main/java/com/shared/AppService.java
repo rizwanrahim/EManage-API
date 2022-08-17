@@ -19,7 +19,8 @@ public class AppService<ID, T, TRepo extends JpaRepository<T, ID>> extends AppRe
     }
 
     public AppResponse<List<T>> GetAll() {
-        return Run(res -> res.setResponse(repo.findAll()));
+        var users = repo.findAll();
+        return Run(res -> res.setResponse(users));
     }
     public AppResponse<T> Save(T e) {
         return Run(res -> {

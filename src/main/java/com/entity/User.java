@@ -11,7 +11,7 @@ import java.util.Collection;
 
 import static javax.persistence.FetchType.EAGER;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
+@Table(name = "users") @Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

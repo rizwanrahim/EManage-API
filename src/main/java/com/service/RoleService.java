@@ -10,4 +10,7 @@ public class RoleService extends AppService<Long, Role, RoleRepo> {
     public RoleService(RoleRepo RoleRepo) {
         super(RoleRepo);
     }
+    public Role findByName(String name) {
+        return this.repo.findByName(name).orElse(null);
+    }
 }

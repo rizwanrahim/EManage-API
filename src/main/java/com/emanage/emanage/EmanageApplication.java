@@ -32,19 +32,27 @@ public class EmanageApplication {
 			UserRoleService userRoleService,
 			RoleService roleService) {
 		return args -> {
-			roleService.Save(new Role(null, "SUPER_ADMIN"));
-			userService.Save(new User(
-					null,
-					"Super Admin",
-					"superadmin@emanage.com",
-					"",
-					"superadmin",
-					"superadmin",
-					null));
 
-			userRoleService.addRoleToUser(new UserRole(
-					"superadmin",
-					"SUPER_ADMIN"));
+			var superadminRole = roleService.findByName("SUPER_ADMIN");
+			var superadmin = userService.findByUsername("superadmin");
+
+			if(superadminRole == null)
+				roleService.Save(new Role(null, "SUPER_ADMIN"));
+
+			if(superadmin == null) {
+				userService.Save(new User(
+						null,
+						"Super Admin",
+						"superadmin@emanage.com",
+						"",
+						"superadmin",
+						"superadmin",
+						null));
+
+				userRoleService.addRoleToUser(new UserRole(
+						"superadmin",
+						"SUPER_ADMIN"));
+			}
 		};
 	}
 }
